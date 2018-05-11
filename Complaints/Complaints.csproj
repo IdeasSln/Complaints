@@ -2605,7 +2605,7 @@
     <Compile Include="Models\Equipment_Photo.cs" />
     <Compile Include="Models\Incident_Type.cs" />
     <Compile Include="Models\POI_Photo.cs" />
-    <Compile Include="SQLFUNC.cs" />
+    <Compile Include="DataLayer\SQLFUNC.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -3625,6 +3625,7 @@
     <Folder Include="fonts\Content\fonts\" />
     <Folder Include="fonts\Content\Images\" />
     <Folder Include="fonts\Content\Styles\" />
+    <Folder Include="Reports\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>

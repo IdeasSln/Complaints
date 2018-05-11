@@ -402,7 +402,6 @@ $(document).ready(function () {
                                 if (L_Name == "")
                                 { alert("Last Name is Required"); return false; }
                                
-                               
                                 if (F_Name == "")
                                 { alert("First Name is Required"); return false; }
                                 if ($("#txtBENumber").val() == "")
