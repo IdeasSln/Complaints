@@ -26,9 +26,9 @@ namespace Complaints.DataLayer {
         
         private INCIDENT_ComplaintsDataTable tableINCIDENT_Complaints;
         
-        private INCIDENT_DispositionDataTable tableINCIDENT_Disposition;
-        
         private INCIDENT_Equipment_PhotoDataTable tableINCIDENT_Equipment_Photo;
+        
+        private INCIDENT_DispositionDataTable tableINCIDENT_Disposition;
         
         private INCIDENT_Equipment_StatusDataTable tableINCIDENT_Equipment_Status;
         
@@ -56,13 +56,19 @@ namespace Complaints.DataLayer {
         
         private INCIDENT_TypeDataTable tableINCIDENT_Type;
         
+        private global::System.Data.DataRelation _relationFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Disposition_Disposition_Id;
+        
         private global::System.Data.DataRelation _relationFK_dbo_INCIDENT_Equipments_dbo_INCIDENT_Equipment_Status_Status_Id;
         
         private global::System.Data.DataRelation _relationFK_dbo_INCIDENT_Equipments_dbo_INCIDENT_Equipment_Type_Type_Id;
         
+        private global::System.Data.DataRelation _relationFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Location_Incident_Location_Id;
+        
         private global::System.Data.DataRelation _relationFK_dbo_INCIDENT_Person_dbo_INCIDENT_Gender_Gender_Id;
         
         private global::System.Data.DataRelation _relationFK_dbo_INCIDENT_Person_Of_Interest_dbo_INCIDENT_POI_Type_Type_Id;
+        
+        private global::System.Data.DataRelation _relationFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Type_INCIDENT_Type_Id;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -95,11 +101,11 @@ namespace Complaints.DataLayer {
                 if ((ds.Tables["INCIDENT_Complaints"] != null)) {
                     base.Tables.Add(new INCIDENT_ComplaintsDataTable(ds.Tables["INCIDENT_Complaints"]));
                 }
-                if ((ds.Tables["INCIDENT_Disposition"] != null)) {
-                    base.Tables.Add(new INCIDENT_DispositionDataTable(ds.Tables["INCIDENT_Disposition"]));
-                }
                 if ((ds.Tables["INCIDENT_Equipment_Photo"] != null)) {
                     base.Tables.Add(new INCIDENT_Equipment_PhotoDataTable(ds.Tables["INCIDENT_Equipment_Photo"]));
+                }
+                if ((ds.Tables["INCIDENT_Disposition"] != null)) {
+                    base.Tables.Add(new INCIDENT_DispositionDataTable(ds.Tables["INCIDENT_Disposition"]));
                 }
                 if ((ds.Tables["INCIDENT_Equipment_Status"] != null)) {
                     base.Tables.Add(new INCIDENT_Equipment_StatusDataTable(ds.Tables["INCIDENT_Equipment_Status"]));
@@ -172,9 +178,9 @@ namespace Complaints.DataLayer {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public INCIDENT_DispositionDataTable INCIDENT_Disposition {
+        public INCIDENT_Equipment_PhotoDataTable INCIDENT_Equipment_Photo {
             get {
-                return this.tableINCIDENT_Disposition;
+                return this.tableINCIDENT_Equipment_Photo;
             }
         }
         
@@ -182,9 +188,9 @@ namespace Complaints.DataLayer {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public INCIDENT_Equipment_PhotoDataTable INCIDENT_Equipment_Photo {
+        public INCIDENT_DispositionDataTable INCIDENT_Disposition {
             get {
-                return this.tableINCIDENT_Equipment_Photo;
+                return this.tableINCIDENT_Disposition;
             }
         }
         
@@ -388,11 +394,11 @@ namespace Complaints.DataLayer {
                 if ((ds.Tables["INCIDENT_Complaints"] != null)) {
                     base.Tables.Add(new INCIDENT_ComplaintsDataTable(ds.Tables["INCIDENT_Complaints"]));
                 }
-                if ((ds.Tables["INCIDENT_Disposition"] != null)) {
-                    base.Tables.Add(new INCIDENT_DispositionDataTable(ds.Tables["INCIDENT_Disposition"]));
-                }
                 if ((ds.Tables["INCIDENT_Equipment_Photo"] != null)) {
                     base.Tables.Add(new INCIDENT_Equipment_PhotoDataTable(ds.Tables["INCIDENT_Equipment_Photo"]));
+                }
+                if ((ds.Tables["INCIDENT_Disposition"] != null)) {
+                    base.Tables.Add(new INCIDENT_DispositionDataTable(ds.Tables["INCIDENT_Disposition"]));
                 }
                 if ((ds.Tables["INCIDENT_Equipment_Status"] != null)) {
                     base.Tables.Add(new INCIDENT_Equipment_StatusDataTable(ds.Tables["INCIDENT_Equipment_Status"]));
@@ -472,16 +478,16 @@ namespace Complaints.DataLayer {
                     this.tableINCIDENT_Complaints.InitVars();
                 }
             }
-            this.tableINCIDENT_Disposition = ((INCIDENT_DispositionDataTable)(base.Tables["INCIDENT_Disposition"]));
-            if ((initTable == true)) {
-                if ((this.tableINCIDENT_Disposition != null)) {
-                    this.tableINCIDENT_Disposition.InitVars();
-                }
-            }
             this.tableINCIDENT_Equipment_Photo = ((INCIDENT_Equipment_PhotoDataTable)(base.Tables["INCIDENT_Equipment_Photo"]));
             if ((initTable == true)) {
                 if ((this.tableINCIDENT_Equipment_Photo != null)) {
                     this.tableINCIDENT_Equipment_Photo.InitVars();
+                }
+            }
+            this.tableINCIDENT_Disposition = ((INCIDENT_DispositionDataTable)(base.Tables["INCIDENT_Disposition"]));
+            if ((initTable == true)) {
+                if ((this.tableINCIDENT_Disposition != null)) {
+                    this.tableINCIDENT_Disposition.InitVars();
                 }
             }
             this.tableINCIDENT_Equipment_Status = ((INCIDENT_Equipment_StatusDataTable)(base.Tables["INCIDENT_Equipment_Status"]));
@@ -562,10 +568,13 @@ namespace Complaints.DataLayer {
                     this.tableINCIDENT_Type.InitVars();
                 }
             }
+            this._relationFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Disposition_Disposition_Id = this.Relations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Disposition_Disposition_Id"];
             this._relationFK_dbo_INCIDENT_Equipments_dbo_INCIDENT_Equipment_Status_Status_Id = this.Relations["FK_dbo.INCIDENT_Equipments_dbo.INCIDENT_Equipment_Status_Status_Id"];
             this._relationFK_dbo_INCIDENT_Equipments_dbo_INCIDENT_Equipment_Type_Type_Id = this.Relations["FK_dbo.INCIDENT_Equipments_dbo.INCIDENT_Equipment_Type_Type_Id"];
+            this._relationFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Location_Incident_Location_Id = this.Relations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Location_Incident_Location_Id"];
             this._relationFK_dbo_INCIDENT_Person_dbo_INCIDENT_Gender_Gender_Id = this.Relations["FK_dbo.INCIDENT_Person_dbo.INCIDENT_Gender_Gender_Id"];
             this._relationFK_dbo_INCIDENT_Person_Of_Interest_dbo_INCIDENT_POI_Type_Type_Id = this.Relations["FK_dbo.INCIDENT_Person_Of_Interest_dbo.INCIDENT_POI_Type_Type_Id"];
+            this._relationFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Type_INCIDENT_Type_Id = this.Relations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Type_INCIDENT_Type_Id"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -578,10 +587,10 @@ namespace Complaints.DataLayer {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableINCIDENT_Complaints = new INCIDENT_ComplaintsDataTable();
             base.Tables.Add(this.tableINCIDENT_Complaints);
-            this.tableINCIDENT_Disposition = new INCIDENT_DispositionDataTable();
-            base.Tables.Add(this.tableINCIDENT_Disposition);
             this.tableINCIDENT_Equipment_Photo = new INCIDENT_Equipment_PhotoDataTable();
             base.Tables.Add(this.tableINCIDENT_Equipment_Photo);
+            this.tableINCIDENT_Disposition = new INCIDENT_DispositionDataTable();
+            base.Tables.Add(this.tableINCIDENT_Disposition);
             this.tableINCIDENT_Equipment_Status = new INCIDENT_Equipment_StatusDataTable();
             base.Tables.Add(this.tableINCIDENT_Equipment_Status);
             this.tableINCIDENT_Equipment_Type = new INCIDENT_Equipment_TypeDataTable();
@@ -608,6 +617,10 @@ namespace Complaints.DataLayer {
             base.Tables.Add(this.tableINCIDENT_Safety_Officer);
             this.tableINCIDENT_Type = new INCIDENT_TypeDataTable();
             base.Tables.Add(this.tableINCIDENT_Type);
+            this._relationFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Disposition_Disposition_Id = new global::System.Data.DataRelation("FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Disposition_Disposition_Id", new global::System.Data.DataColumn[] {
+                        this.tableINCIDENT_Disposition.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableINCIDENT_Complaints.Disposition_IdColumn}, false);
+            this.Relations.Add(this._relationFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Disposition_Disposition_Id);
             this._relationFK_dbo_INCIDENT_Equipments_dbo_INCIDENT_Equipment_Status_Status_Id = new global::System.Data.DataRelation("FK_dbo.INCIDENT_Equipments_dbo.INCIDENT_Equipment_Status_Status_Id", new global::System.Data.DataColumn[] {
                         this.tableINCIDENT_Equipment_Status.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableINCIDENT_Equipments.Status_IdColumn}, false);
@@ -616,6 +629,10 @@ namespace Complaints.DataLayer {
                         this.tableINCIDENT_Equipment_Type.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableINCIDENT_Equipments.Type_IdColumn}, false);
             this.Relations.Add(this._relationFK_dbo_INCIDENT_Equipments_dbo_INCIDENT_Equipment_Type_Type_Id);
+            this._relationFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Location_Incident_Location_Id = new global::System.Data.DataRelation("FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Location_Incident_Location_Id", new global::System.Data.DataColumn[] {
+                        this.tableINCIDENT_Location.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableINCIDENT_Complaints.Incident_Location_IdColumn}, false);
+            this.Relations.Add(this._relationFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Location_Incident_Location_Id);
             this._relationFK_dbo_INCIDENT_Person_dbo_INCIDENT_Gender_Gender_Id = new global::System.Data.DataRelation("FK_dbo.INCIDENT_Person_dbo.INCIDENT_Gender_Gender_Id", new global::System.Data.DataColumn[] {
                         this.tableINCIDENT_Gender.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableINCIDENT_Person.Gender_IdColumn}, false);
@@ -624,6 +641,10 @@ namespace Complaints.DataLayer {
                         this.tableINCIDENT_POI_Type.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableINCIDENT_Person_Of_Interest.Type_IdColumn}, false);
             this.Relations.Add(this._relationFK_dbo_INCIDENT_Person_Of_Interest_dbo_INCIDENT_POI_Type_Type_Id);
+            this._relationFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Type_INCIDENT_Type_Id = new global::System.Data.DataRelation("FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Type_INCIDENT_Type_Id", new global::System.Data.DataColumn[] {
+                        this.tableINCIDENT_Type.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableINCIDENT_Complaints.Incident_Type_IdColumn}, false);
+            this.Relations.Add(this._relationFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Type_INCIDENT_Type_Id);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -634,13 +655,13 @@ namespace Complaints.DataLayer {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeINCIDENT_Disposition() {
+        private bool ShouldSerializeINCIDENT_Equipment_Photo() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeINCIDENT_Equipment_Photo() {
+        private bool ShouldSerializeINCIDENT_Disposition() {
             return false;
         }
         
@@ -781,10 +802,10 @@ namespace Complaints.DataLayer {
         public delegate void INCIDENT_ComplaintsRowChangeEventHandler(object sender, INCIDENT_ComplaintsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void INCIDENT_DispositionRowChangeEventHandler(object sender, INCIDENT_DispositionRowChangeEvent e);
+        public delegate void INCIDENT_Equipment_PhotoRowChangeEventHandler(object sender, INCIDENT_Equipment_PhotoRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void INCIDENT_Equipment_PhotoRowChangeEventHandler(object sender, INCIDENT_Equipment_PhotoRowChangeEvent e);
+        public delegate void INCIDENT_DispositionRowChangeEventHandler(object sender, INCIDENT_DispositionRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void INCIDENT_Equipment_StatusRowChangeEventHandler(object sender, INCIDENT_Equipment_StatusRowChangeEvent e);
@@ -1052,7 +1073,7 @@ namespace Complaints.DataLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public INCIDENT_ComplaintsRow AddINCIDENT_ComplaintsRow(System.DateTime Report_Date, System.DateTime Incident_Occurance_Date, string Narrative, int Complainant_Id, int Disposition_Id, int Incident_Location_Id, int Incident_Type_Id, int Report_Reviewed_By_Id, int Report_Written_By_Id, string Audit_createdby, string Audit_modifiedby, System.DateTime Audit_createddate, System.DateTime Audit_modifieddate, string Be_Id) {
+            public INCIDENT_ComplaintsRow AddINCIDENT_ComplaintsRow(System.DateTime Report_Date, System.DateTime Incident_Occurance_Date, string Narrative, int Complainant_Id, INCIDENT_DispositionRow _parentINCIDENT_DispositionRowByFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Disposition_Disposition_Id, INCIDENT_LocationRow _parentINCIDENT_LocationRowByFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Location_Incident_Location_Id, INCIDENT_TypeRow _parentINCIDENT_TypeRowByFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Type_INCIDENT_Type_Id, int Report_Reviewed_By_Id, int Report_Written_By_Id, string Audit_createdby, string Audit_modifiedby, System.DateTime Audit_createddate, System.DateTime Audit_modifieddate, string Be_Id) {
                 INCIDENT_ComplaintsRow rowINCIDENT_ComplaintsRow = ((INCIDENT_ComplaintsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1060,9 +1081,9 @@ namespace Complaints.DataLayer {
                         Incident_Occurance_Date,
                         Narrative,
                         Complainant_Id,
-                        Disposition_Id,
-                        Incident_Location_Id,
-                        Incident_Type_Id,
+                        null,
+                        null,
+                        null,
                         Report_Reviewed_By_Id,
                         Report_Written_By_Id,
                         Audit_createdby,
@@ -1070,6 +1091,15 @@ namespace Complaints.DataLayer {
                         Audit_createddate,
                         Audit_modifieddate,
                         Be_Id};
+                if ((_parentINCIDENT_DispositionRowByFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Disposition_Disposition_Id != null)) {
+                    columnValuesArray[5] = _parentINCIDENT_DispositionRowByFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Disposition_Disposition_Id[0];
+                }
+                if ((_parentINCIDENT_LocationRowByFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Location_Incident_Location_Id != null)) {
+                    columnValuesArray[6] = _parentINCIDENT_LocationRowByFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Location_Incident_Location_Id[0];
+                }
+                if ((_parentINCIDENT_TypeRowByFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Type_INCIDENT_Type_Id != null)) {
+                    columnValuesArray[7] = _parentINCIDENT_TypeRowByFK_dbo_INCIDENT_Complaints_dbo_INCIDENT_Type_INCIDENT_Type_Id[0];
+                }
                 rowINCIDENT_ComplaintsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowINCIDENT_ComplaintsRow);
                 return rowINCIDENT_ComplaintsRow;
@@ -1247,355 +1277,6 @@ namespace Complaints.DataLayer {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "INCIDENT_ComplaintsDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class INCIDENT_DispositionDataTable : global::System.Data.TypedTableBase<INCIDENT_DispositionRow> {
-            
-            private global::System.Data.DataColumn columnId;
-            
-            private global::System.Data.DataColumn columnDescription;
-            
-            private global::System.Data.DataColumn columnActive;
-            
-            private global::System.Data.DataColumn columnAudit_createdby;
-            
-            private global::System.Data.DataColumn columnAudit_modifiedby;
-            
-            private global::System.Data.DataColumn columnAudit_createddate;
-            
-            private global::System.Data.DataColumn columnAudit_modifieddate;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public INCIDENT_DispositionDataTable() {
-                this.TableName = "INCIDENT_Disposition";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal INCIDENT_DispositionDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected INCIDENT_DispositionDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
-                get {
-                    return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DescriptionColumn {
-                get {
-                    return this.columnDescription;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ActiveColumn {
-                get {
-                    return this.columnActive;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Audit_createdbyColumn {
-                get {
-                    return this.columnAudit_createdby;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Audit_modifiedbyColumn {
-                get {
-                    return this.columnAudit_modifiedby;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Audit_createddateColumn {
-                get {
-                    return this.columnAudit_createddate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Audit_modifieddateColumn {
-                get {
-                    return this.columnAudit_modifieddate;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public INCIDENT_DispositionRow this[int index] {
-                get {
-                    return ((INCIDENT_DispositionRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event INCIDENT_DispositionRowChangeEventHandler INCIDENT_DispositionRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event INCIDENT_DispositionRowChangeEventHandler INCIDENT_DispositionRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event INCIDENT_DispositionRowChangeEventHandler INCIDENT_DispositionRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event INCIDENT_DispositionRowChangeEventHandler INCIDENT_DispositionRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddINCIDENT_DispositionRow(INCIDENT_DispositionRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public INCIDENT_DispositionRow AddINCIDENT_DispositionRow(string Description, bool Active, string Audit_createdby, string Audit_modifiedby, System.DateTime Audit_createddate, System.DateTime Audit_modifieddate) {
-                INCIDENT_DispositionRow rowINCIDENT_DispositionRow = ((INCIDENT_DispositionRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Description,
-                        Active,
-                        Audit_createdby,
-                        Audit_modifiedby,
-                        Audit_createddate,
-                        Audit_modifieddate};
-                rowINCIDENT_DispositionRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowINCIDENT_DispositionRow);
-                return rowINCIDENT_DispositionRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public INCIDENT_DispositionRow FindById(int Id) {
-                return ((INCIDENT_DispositionRow)(this.Rows.Find(new object[] {
-                            Id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                INCIDENT_DispositionDataTable cln = ((INCIDENT_DispositionDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new INCIDENT_DispositionDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnDescription = base.Columns["Description"];
-                this.columnActive = base.Columns["Active"];
-                this.columnAudit_createdby = base.Columns["Audit_createdby"];
-                this.columnAudit_modifiedby = base.Columns["Audit_modifiedby"];
-                this.columnAudit_createddate = base.Columns["Audit_createddate"];
-                this.columnAudit_modifieddate = base.Columns["Audit_modifieddate"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDescription);
-                this.columnActive = new global::System.Data.DataColumn("Active", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnActive);
-                this.columnAudit_createdby = new global::System.Data.DataColumn("Audit_createdby", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAudit_createdby);
-                this.columnAudit_modifiedby = new global::System.Data.DataColumn("Audit_modifiedby", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAudit_modifiedby);
-                this.columnAudit_createddate = new global::System.Data.DataColumn("Audit_createddate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAudit_createddate);
-                this.columnAudit_modifieddate = new global::System.Data.DataColumn("Audit_modifieddate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAudit_modifieddate);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
-                this.columnId.AllowDBNull = false;
-                this.columnId.ReadOnly = true;
-                this.columnId.Unique = true;
-                this.columnDescription.MaxLength = 2147483647;
-                this.columnAudit_createdby.MaxLength = 2147483647;
-                this.columnAudit_modifiedby.MaxLength = 2147483647;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public INCIDENT_DispositionRow NewINCIDENT_DispositionRow() {
-                return ((INCIDENT_DispositionRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new INCIDENT_DispositionRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(INCIDENT_DispositionRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.INCIDENT_DispositionRowChanged != null)) {
-                    this.INCIDENT_DispositionRowChanged(this, new INCIDENT_DispositionRowChangeEvent(((INCIDENT_DispositionRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.INCIDENT_DispositionRowChanging != null)) {
-                    this.INCIDENT_DispositionRowChanging(this, new INCIDENT_DispositionRowChangeEvent(((INCIDENT_DispositionRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.INCIDENT_DispositionRowDeleted != null)) {
-                    this.INCIDENT_DispositionRowDeleted(this, new INCIDENT_DispositionRowChangeEvent(((INCIDENT_DispositionRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.INCIDENT_DispositionRowDeleting != null)) {
-                    this.INCIDENT_DispositionRowDeleting(this, new INCIDENT_DispositionRowChangeEvent(((INCIDENT_DispositionRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveINCIDENT_DispositionRow(INCIDENT_DispositionRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                ReportDataSet ds = new ReportDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "INCIDENT_DispositionDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1960,6 +1641,355 @@ namespace Complaints.DataLayer {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "INCIDENT_Equipment_PhotoDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class INCIDENT_DispositionDataTable : global::System.Data.TypedTableBase<INCIDENT_DispositionRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnDescription;
+            
+            private global::System.Data.DataColumn columnActive;
+            
+            private global::System.Data.DataColumn columnAudit_createdby;
+            
+            private global::System.Data.DataColumn columnAudit_modifiedby;
+            
+            private global::System.Data.DataColumn columnAudit_createddate;
+            
+            private global::System.Data.DataColumn columnAudit_modifieddate;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public INCIDENT_DispositionDataTable() {
+                this.TableName = "INCIDENT_Disposition";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal INCIDENT_DispositionDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected INCIDENT_DispositionDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DescriptionColumn {
+                get {
+                    return this.columnDescription;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ActiveColumn {
+                get {
+                    return this.columnActive;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Audit_createdbyColumn {
+                get {
+                    return this.columnAudit_createdby;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Audit_modifiedbyColumn {
+                get {
+                    return this.columnAudit_modifiedby;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Audit_createddateColumn {
+                get {
+                    return this.columnAudit_createddate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Audit_modifieddateColumn {
+                get {
+                    return this.columnAudit_modifieddate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public INCIDENT_DispositionRow this[int index] {
+                get {
+                    return ((INCIDENT_DispositionRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event INCIDENT_DispositionRowChangeEventHandler INCIDENT_DispositionRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event INCIDENT_DispositionRowChangeEventHandler INCIDENT_DispositionRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event INCIDENT_DispositionRowChangeEventHandler INCIDENT_DispositionRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event INCIDENT_DispositionRowChangeEventHandler INCIDENT_DispositionRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddINCIDENT_DispositionRow(INCIDENT_DispositionRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public INCIDENT_DispositionRow AddINCIDENT_DispositionRow(string Description, bool Active, string Audit_createdby, string Audit_modifiedby, System.DateTime Audit_createddate, System.DateTime Audit_modifieddate) {
+                INCIDENT_DispositionRow rowINCIDENT_DispositionRow = ((INCIDENT_DispositionRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Description,
+                        Active,
+                        Audit_createdby,
+                        Audit_modifiedby,
+                        Audit_createddate,
+                        Audit_modifieddate};
+                rowINCIDENT_DispositionRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowINCIDENT_DispositionRow);
+                return rowINCIDENT_DispositionRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public INCIDENT_DispositionRow FindById(int Id) {
+                return ((INCIDENT_DispositionRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                INCIDENT_DispositionDataTable cln = ((INCIDENT_DispositionDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new INCIDENT_DispositionDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnDescription = base.Columns["Description"];
+                this.columnActive = base.Columns["Active"];
+                this.columnAudit_createdby = base.Columns["Audit_createdby"];
+                this.columnAudit_modifiedby = base.Columns["Audit_modifiedby"];
+                this.columnAudit_createddate = base.Columns["Audit_createddate"];
+                this.columnAudit_modifieddate = base.Columns["Audit_modifieddate"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescription);
+                this.columnActive = new global::System.Data.DataColumn("Active", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnActive);
+                this.columnAudit_createdby = new global::System.Data.DataColumn("Audit_createdby", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAudit_createdby);
+                this.columnAudit_modifiedby = new global::System.Data.DataColumn("Audit_modifiedby", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAudit_modifiedby);
+                this.columnAudit_createddate = new global::System.Data.DataColumn("Audit_createddate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAudit_createddate);
+                this.columnAudit_modifieddate = new global::System.Data.DataColumn("Audit_modifieddate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAudit_modifieddate);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
+                this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
+                this.columnId.Unique = true;
+                this.columnDescription.MaxLength = 2147483647;
+                this.columnAudit_createdby.MaxLength = 2147483647;
+                this.columnAudit_modifiedby.MaxLength = 2147483647;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public INCIDENT_DispositionRow NewINCIDENT_DispositionRow() {
+                return ((INCIDENT_DispositionRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new INCIDENT_DispositionRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(INCIDENT_DispositionRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.INCIDENT_DispositionRowChanged != null)) {
+                    this.INCIDENT_DispositionRowChanged(this, new INCIDENT_DispositionRowChangeEvent(((INCIDENT_DispositionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.INCIDENT_DispositionRowChanging != null)) {
+                    this.INCIDENT_DispositionRowChanging(this, new INCIDENT_DispositionRowChangeEvent(((INCIDENT_DispositionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.INCIDENT_DispositionRowDeleted != null)) {
+                    this.INCIDENT_DispositionRowDeleted(this, new INCIDENT_DispositionRowChangeEvent(((INCIDENT_DispositionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.INCIDENT_DispositionRowDeleting != null)) {
+                    this.INCIDENT_DispositionRowDeleting(this, new INCIDENT_DispositionRowChangeEvent(((INCIDENT_DispositionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveINCIDENT_DispositionRow(INCIDENT_DispositionRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                ReportDataSet ds = new ReportDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "INCIDENT_DispositionDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -7136,6 +7166,39 @@ namespace Complaints.DataLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public INCIDENT_DispositionRow INCIDENT_DispositionRow {
+                get {
+                    return ((INCIDENT_DispositionRow)(this.GetParentRow(this.Table.ParentRelations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Disposition_Disposition_Id"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Disposition_Disposition_Id"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public INCIDENT_LocationRow INCIDENT_LocationRow {
+                get {
+                    return ((INCIDENT_LocationRow)(this.GetParentRow(this.Table.ParentRelations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Location_Incident_Location_Id"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Location_Incident_Location_Id"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public INCIDENT_TypeRow INCIDENT_TypeRow {
+                get {
+                    return ((INCIDENT_TypeRow)(this.GetParentRow(this.Table.ParentRelations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Type_INCIDENT_Type_Id"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Type_INCIDENT_Type_Id"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsReport_DateNull() {
                 return this.IsNull(this.tableINCIDENT_Complaints.Report_DateColumn);
             }
@@ -7300,204 +7363,6 @@ namespace Complaints.DataLayer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetBe_IdNull() {
                 this[this.tableINCIDENT_Complaints.Be_IdColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class INCIDENT_DispositionRow : global::System.Data.DataRow {
-            
-            private INCIDENT_DispositionDataTable tableINCIDENT_Disposition;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal INCIDENT_DispositionRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableINCIDENT_Disposition = ((INCIDENT_DispositionDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Id {
-                get {
-                    return ((int)(this[this.tableINCIDENT_Disposition.IdColumn]));
-                }
-                set {
-                    this[this.tableINCIDENT_Disposition.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Description {
-                get {
-                    try {
-                        return ((string)(this[this.tableINCIDENT_Disposition.DescriptionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'INCIDENT_Disposition\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableINCIDENT_Disposition.DescriptionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Active {
-                get {
-                    try {
-                        return ((bool)(this[this.tableINCIDENT_Disposition.ActiveColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Active\' in table \'INCIDENT_Disposition\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableINCIDENT_Disposition.ActiveColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Audit_createdby {
-                get {
-                    try {
-                        return ((string)(this[this.tableINCIDENT_Disposition.Audit_createdbyColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Audit_createdby\' in table \'INCIDENT_Disposition\' is DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tableINCIDENT_Disposition.Audit_createdbyColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Audit_modifiedby {
-                get {
-                    try {
-                        return ((string)(this[this.tableINCIDENT_Disposition.Audit_modifiedbyColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Audit_modifiedby\' in table \'INCIDENT_Disposition\' is DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tableINCIDENT_Disposition.Audit_modifiedbyColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime Audit_createddate {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableINCIDENT_Disposition.Audit_createddateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Audit_createddate\' in table \'INCIDENT_Disposition\' is DBNul" +
-                                "l.", e);
-                    }
-                }
-                set {
-                    this[this.tableINCIDENT_Disposition.Audit_createddateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime Audit_modifieddate {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableINCIDENT_Disposition.Audit_modifieddateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Audit_modifieddate\' in table \'INCIDENT_Disposition\' is DBNu" +
-                                "ll.", e);
-                    }
-                }
-                set {
-                    this[this.tableINCIDENT_Disposition.Audit_modifieddateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDescriptionNull() {
-                return this.IsNull(this.tableINCIDENT_Disposition.DescriptionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDescriptionNull() {
-                this[this.tableINCIDENT_Disposition.DescriptionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsActiveNull() {
-                return this.IsNull(this.tableINCIDENT_Disposition.ActiveColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetActiveNull() {
-                this[this.tableINCIDENT_Disposition.ActiveColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAudit_createdbyNull() {
-                return this.IsNull(this.tableINCIDENT_Disposition.Audit_createdbyColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetAudit_createdbyNull() {
-                this[this.tableINCIDENT_Disposition.Audit_createdbyColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAudit_modifiedbyNull() {
-                return this.IsNull(this.tableINCIDENT_Disposition.Audit_modifiedbyColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetAudit_modifiedbyNull() {
-                this[this.tableINCIDENT_Disposition.Audit_modifiedbyColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAudit_createddateNull() {
-                return this.IsNull(this.tableINCIDENT_Disposition.Audit_createddateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetAudit_createddateNull() {
-                this[this.tableINCIDENT_Disposition.Audit_createddateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsAudit_modifieddateNull() {
-                return this.IsNull(this.tableINCIDENT_Disposition.Audit_modifieddateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetAudit_modifieddateNull() {
-                this[this.tableINCIDENT_Disposition.Audit_modifieddateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7726,6 +7591,215 @@ namespace Complaints.DataLayer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetAudit_modifieddateNull() {
                 this[this.tableINCIDENT_Equipment_Photo.Audit_modifieddateColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class INCIDENT_DispositionRow : global::System.Data.DataRow {
+            
+            private INCIDENT_DispositionDataTable tableINCIDENT_Disposition;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal INCIDENT_DispositionRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableINCIDENT_Disposition = ((INCIDENT_DispositionDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Id {
+                get {
+                    return ((int)(this[this.tableINCIDENT_Disposition.IdColumn]));
+                }
+                set {
+                    this[this.tableINCIDENT_Disposition.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Description {
+                get {
+                    try {
+                        return ((string)(this[this.tableINCIDENT_Disposition.DescriptionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'INCIDENT_Disposition\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableINCIDENT_Disposition.DescriptionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Active {
+                get {
+                    try {
+                        return ((bool)(this[this.tableINCIDENT_Disposition.ActiveColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Active\' in table \'INCIDENT_Disposition\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableINCIDENT_Disposition.ActiveColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Audit_createdby {
+                get {
+                    try {
+                        return ((string)(this[this.tableINCIDENT_Disposition.Audit_createdbyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Audit_createdby\' in table \'INCIDENT_Disposition\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableINCIDENT_Disposition.Audit_createdbyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Audit_modifiedby {
+                get {
+                    try {
+                        return ((string)(this[this.tableINCIDENT_Disposition.Audit_modifiedbyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Audit_modifiedby\' in table \'INCIDENT_Disposition\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableINCIDENT_Disposition.Audit_modifiedbyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime Audit_createddate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableINCIDENT_Disposition.Audit_createddateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Audit_createddate\' in table \'INCIDENT_Disposition\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableINCIDENT_Disposition.Audit_createddateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime Audit_modifieddate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableINCIDENT_Disposition.Audit_modifieddateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Audit_modifieddate\' in table \'INCIDENT_Disposition\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableINCIDENT_Disposition.Audit_modifieddateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDescriptionNull() {
+                return this.IsNull(this.tableINCIDENT_Disposition.DescriptionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDescriptionNull() {
+                this[this.tableINCIDENT_Disposition.DescriptionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsActiveNull() {
+                return this.IsNull(this.tableINCIDENT_Disposition.ActiveColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetActiveNull() {
+                this[this.tableINCIDENT_Disposition.ActiveColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAudit_createdbyNull() {
+                return this.IsNull(this.tableINCIDENT_Disposition.Audit_createdbyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAudit_createdbyNull() {
+                this[this.tableINCIDENT_Disposition.Audit_createdbyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAudit_modifiedbyNull() {
+                return this.IsNull(this.tableINCIDENT_Disposition.Audit_modifiedbyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAudit_modifiedbyNull() {
+                this[this.tableINCIDENT_Disposition.Audit_modifiedbyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAudit_createddateNull() {
+                return this.IsNull(this.tableINCIDENT_Disposition.Audit_createddateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAudit_createddateNull() {
+                this[this.tableINCIDENT_Disposition.Audit_createddateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAudit_modifieddateNull() {
+                return this.IsNull(this.tableINCIDENT_Disposition.Audit_modifieddateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAudit_modifieddateNull() {
+                this[this.tableINCIDENT_Disposition.Audit_modifieddateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public INCIDENT_ComplaintsRow[] GetINCIDENT_ComplaintsRows() {
+                if ((this.Table.ChildRelations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Disposition_Disposition_Id"] == null)) {
+                    return new INCIDENT_ComplaintsRow[0];
+                }
+                else {
+                    return ((INCIDENT_ComplaintsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Disposition_Disposition_Id"])));
+                }
             }
         }
         
@@ -8864,6 +8938,17 @@ namespace Complaints.DataLayer {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetAudit_modifieddateNull() {
                 this[this.tableINCIDENT_Location.Audit_modifieddateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public INCIDENT_ComplaintsRow[] GetINCIDENT_ComplaintsRows() {
+                if ((this.Table.ChildRelations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Location_Incident_Location_Id"] == null)) {
+                    return new INCIDENT_ComplaintsRow[0];
+                }
+                else {
+                    return ((INCIDENT_ComplaintsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Location_Incident_Location_Id"])));
+                }
             }
         }
         
@@ -10894,6 +10979,17 @@ namespace Complaints.DataLayer {
             public void SetAudit_modifieddateNull() {
                 this[this.tableINCIDENT_Type.Audit_modifieddateColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public INCIDENT_ComplaintsRow[] GetINCIDENT_ComplaintsRows() {
+                if ((this.Table.ChildRelations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Type_INCIDENT_Type_Id"] == null)) {
+                    return new INCIDENT_ComplaintsRow[0];
+                }
+                else {
+                    return ((INCIDENT_ComplaintsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_dbo.INCIDENT_Complaints_dbo.INCIDENT_Type_INCIDENT_Type_Id"])));
+                }
+            }
         }
         
         /// <summary>
@@ -10934,22 +11030,22 @@ namespace Complaints.DataLayer {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class INCIDENT_DispositionRowChangeEvent : global::System.EventArgs {
+        public class INCIDENT_Equipment_PhotoRowChangeEvent : global::System.EventArgs {
             
-            private INCIDENT_DispositionRow eventRow;
+            private INCIDENT_Equipment_PhotoRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public INCIDENT_DispositionRowChangeEvent(INCIDENT_DispositionRow row, global::System.Data.DataRowAction action) {
+            public INCIDENT_Equipment_PhotoRowChangeEvent(INCIDENT_Equipment_PhotoRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public INCIDENT_DispositionRow Row {
+            public INCIDENT_Equipment_PhotoRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -10968,22 +11064,22 @@ namespace Complaints.DataLayer {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class INCIDENT_Equipment_PhotoRowChangeEvent : global::System.EventArgs {
+        public class INCIDENT_DispositionRowChangeEvent : global::System.EventArgs {
             
-            private INCIDENT_Equipment_PhotoRow eventRow;
+            private INCIDENT_DispositionRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public INCIDENT_Equipment_PhotoRowChangeEvent(INCIDENT_Equipment_PhotoRow row, global::System.Data.DataRowAction action) {
+            public INCIDENT_DispositionRowChangeEvent(INCIDENT_DispositionRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public INCIDENT_Equipment_PhotoRow Row {
+            public INCIDENT_DispositionRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -11938,372 +12034,6 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class INCIDENT_DispositionTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public INCIDENT_DispositionTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "INCIDENT_Disposition";
-            tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("Description", "Description");
-            tableMapping.ColumnMappings.Add("Active", "Active");
-            tableMapping.ColumnMappings.Add("Audit_createdby", "Audit_createdby");
-            tableMapping.ColumnMappings.Add("Audit_modifiedby", "Audit_modifiedby");
-            tableMapping.ColumnMappings.Add("Audit_createddate", "Audit_createddate");
-            tableMapping.ColumnMappings.Add("Audit_modifieddate", "Audit_modifieddate");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[INCIDENT_Disposition] WHERE (([Id] = @Original_Id))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[INCIDENT_Disposition] ([Description], [Active], [Audit_createdby], [Audit_modifiedby], [Audit_createddate], [Audit_modifieddate]) VALUES (@Description, @Active, @Audit_createdby, @Audit_modifiedby, @Audit_createddate, @Audit_modifieddate)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Active", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Active", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_createdby", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_createdby", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_modifiedby", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_modifiedby", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_createddate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_createddate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_modifieddate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_modifieddate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[INCIDENT_Disposition] SET [Description] = @Description, [Active] = @Active, [Audit_createdby] = @Audit_createdby, [Audit_modifiedby] = @Audit_modifiedby, [Audit_createddate] = @Audit_createddate, [Audit_modifieddate] = @Audit_modifieddate WHERE (([Id] = @Original_Id))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Active", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Active", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_createdby", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_createdby", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_modifiedby", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_modifiedby", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_createddate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_createddate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_modifieddate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_modifieddate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ComplaintsContext_20180325194636ConnectionString"].ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Description, Active, Audit_createdby, Audit_modifiedby, Audit_createdd" +
-                "ate, Audit_modifieddate FROM dbo.INCIDENT_Disposition";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(ReportDataSet.INCIDENT_DispositionDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual ReportDataSet.INCIDENT_DispositionDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            ReportDataSet.INCIDENT_DispositionDataTable dataTable = new ReportDataSet.INCIDENT_DispositionDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ReportDataSet.INCIDENT_DispositionDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(ReportDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "INCIDENT_Disposition");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Description, global::System.Nullable<bool> Active, string Audit_createdby, string Audit_modifiedby, global::System.Nullable<global::System.DateTime> Audit_createddate, global::System.Nullable<global::System.DateTime> Audit_modifieddate) {
-            if ((Description == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Description));
-            }
-            if ((Active.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((bool)(Active.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((Audit_createdby == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Audit_createdby));
-            }
-            if ((Audit_modifiedby == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Audit_modifiedby));
-            }
-            if ((Audit_createddate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(Audit_createddate.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((Audit_modifieddate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(Audit_modifieddate.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Description, global::System.Nullable<bool> Active, string Audit_createdby, string Audit_modifiedby, global::System.Nullable<global::System.DateTime> Audit_createddate, global::System.Nullable<global::System.DateTime> Audit_modifieddate, int Original_Id) {
-            if ((Description == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Description));
-            }
-            if ((Active.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((bool)(Active.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((Audit_createdby == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Audit_createdby));
-            }
-            if ((Audit_modifiedby == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Audit_modifiedby));
-            }
-            if ((Audit_createddate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Audit_createddate.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((Audit_modifieddate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(Audit_modifieddate.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class INCIDENT_Equipment_PhotoTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
@@ -12659,6 +12389,372 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class INCIDENT_DispositionTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public INCIDENT_DispositionTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "INCIDENT_Disposition";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("Description", "Description");
+            tableMapping.ColumnMappings.Add("Active", "Active");
+            tableMapping.ColumnMappings.Add("Audit_createdby", "Audit_createdby");
+            tableMapping.ColumnMappings.Add("Audit_modifiedby", "Audit_modifiedby");
+            tableMapping.ColumnMappings.Add("Audit_createddate", "Audit_createddate");
+            tableMapping.ColumnMappings.Add("Audit_modifieddate", "Audit_modifieddate");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[INCIDENT_Disposition] WHERE (([Id] = @Original_Id))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[INCIDENT_Disposition] ([Description], [Active], [Audit_createdby], [Audit_modifiedby], [Audit_createddate], [Audit_modifieddate]) VALUES (@Description, @Active, @Audit_createdby, @Audit_modifiedby, @Audit_createddate, @Audit_modifieddate)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Active", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Active", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_createdby", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_createdby", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_modifiedby", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_modifiedby", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_createddate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_createddate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_modifieddate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_modifieddate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[INCIDENT_Disposition] SET [Description] = @Description, [Active] = @Active, [Audit_createdby] = @Audit_createdby, [Audit_modifiedby] = @Audit_modifiedby, [Audit_createddate] = @Audit_createddate, [Audit_modifieddate] = @Audit_modifieddate WHERE (([Id] = @Original_Id))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Active", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Active", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_createdby", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_createdby", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_modifiedby", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_modifiedby", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_createddate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_createddate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Audit_modifieddate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Audit_modifieddate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ComplaintsContext_20180325194636ConnectionString"].ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Id, Description, Active, Audit_createdby, Audit_modifiedby, Audit_createdd" +
+                "ate, Audit_modifieddate FROM dbo.INCIDENT_Disposition";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(ReportDataSet.INCIDENT_DispositionDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual ReportDataSet.INCIDENT_DispositionDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            ReportDataSet.INCIDENT_DispositionDataTable dataTable = new ReportDataSet.INCIDENT_DispositionDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ReportDataSet.INCIDENT_DispositionDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ReportDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "INCIDENT_Disposition");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_Id) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string Description, global::System.Nullable<bool> Active, string Audit_createdby, string Audit_modifiedby, global::System.Nullable<global::System.DateTime> Audit_createddate, global::System.Nullable<global::System.DateTime> Audit_modifieddate) {
+            if ((Description == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Description));
+            }
+            if ((Active.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((bool)(Active.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((Audit_createdby == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Audit_createdby));
+            }
+            if ((Audit_modifiedby == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Audit_modifiedby));
+            }
+            if ((Audit_createddate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(Audit_createddate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((Audit_modifieddate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(Audit_modifieddate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string Description, global::System.Nullable<bool> Active, string Audit_createdby, string Audit_modifiedby, global::System.Nullable<global::System.DateTime> Audit_createddate, global::System.Nullable<global::System.DateTime> Audit_modifieddate, int Original_Id) {
+            if ((Description == null)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Description));
+            }
+            if ((Active.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((bool)(Active.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((Audit_createdby == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Audit_createdby));
+            }
+            if ((Audit_modifiedby == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Audit_modifiedby));
+            }
+            if ((Audit_createddate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Audit_createddate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((Audit_modifieddate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(Audit_modifieddate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -17773,9 +17869,9 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
         
         private INCIDENT_ComplaintsTableAdapter _iNCIDENT_ComplaintsTableAdapter;
         
-        private INCIDENT_DispositionTableAdapter _iNCIDENT_DispositionTableAdapter;
-        
         private INCIDENT_Equipment_PhotoTableAdapter _iNCIDENT_Equipment_PhotoTableAdapter;
+        
+        private INCIDENT_DispositionTableAdapter _iNCIDENT_DispositionTableAdapter;
         
         private INCIDENT_Equipment_StatusTableAdapter _iNCIDENT_Equipment_StatusTableAdapter;
         
@@ -17837,12 +17933,12 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public INCIDENT_DispositionTableAdapter INCIDENT_DispositionTableAdapter {
+        public INCIDENT_Equipment_PhotoTableAdapter INCIDENT_Equipment_PhotoTableAdapter {
             get {
-                return this._iNCIDENT_DispositionTableAdapter;
+                return this._iNCIDENT_Equipment_PhotoTableAdapter;
             }
             set {
-                this._iNCIDENT_DispositionTableAdapter = value;
+                this._iNCIDENT_Equipment_PhotoTableAdapter = value;
             }
         }
         
@@ -17851,12 +17947,12 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public INCIDENT_Equipment_PhotoTableAdapter INCIDENT_Equipment_PhotoTableAdapter {
+        public INCIDENT_DispositionTableAdapter INCIDENT_DispositionTableAdapter {
             get {
-                return this._iNCIDENT_Equipment_PhotoTableAdapter;
+                return this._iNCIDENT_DispositionTableAdapter;
             }
             set {
-                this._iNCIDENT_Equipment_PhotoTableAdapter = value;
+                this._iNCIDENT_DispositionTableAdapter = value;
             }
         }
         
@@ -18065,13 +18161,13 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                             && (this._iNCIDENT_ComplaintsTableAdapter.Connection != null))) {
                     return this._iNCIDENT_ComplaintsTableAdapter.Connection;
                 }
-                if (((this._iNCIDENT_DispositionTableAdapter != null) 
-                            && (this._iNCIDENT_DispositionTableAdapter.Connection != null))) {
-                    return this._iNCIDENT_DispositionTableAdapter.Connection;
-                }
                 if (((this._iNCIDENT_Equipment_PhotoTableAdapter != null) 
                             && (this._iNCIDENT_Equipment_PhotoTableAdapter.Connection != null))) {
                     return this._iNCIDENT_Equipment_PhotoTableAdapter.Connection;
+                }
+                if (((this._iNCIDENT_DispositionTableAdapter != null) 
+                            && (this._iNCIDENT_DispositionTableAdapter.Connection != null))) {
+                    return this._iNCIDENT_DispositionTableAdapter.Connection;
                 }
                 if (((this._iNCIDENT_Equipment_StatusTableAdapter != null) 
                             && (this._iNCIDENT_Equipment_StatusTableAdapter.Connection != null))) {
@@ -18141,10 +18237,10 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                 if ((this._iNCIDENT_ComplaintsTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._iNCIDENT_DispositionTableAdapter != null)) {
+                if ((this._iNCIDENT_Equipment_PhotoTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._iNCIDENT_Equipment_PhotoTableAdapter != null)) {
+                if ((this._iNCIDENT_DispositionTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._iNCIDENT_Equipment_StatusTableAdapter != null)) {
@@ -18197,6 +18293,15 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(ReportDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._iNCIDENT_DispositionTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.INCIDENT_Disposition.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._iNCIDENT_DispositionTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._iNCIDENT_Equipment_StatusTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.INCIDENT_Equipment_Status.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -18224,6 +18329,15 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._iNCIDENT_LocationTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.INCIDENT_Location.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._iNCIDENT_LocationTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._iNCIDENT_POI_TypeTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.INCIDENT_POI_Type.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -18233,21 +18347,21 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._iNCIDENT_TypeTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.INCIDENT_Type.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._iNCIDENT_TypeTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._iNCIDENT_ComplaintsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.INCIDENT_Complaints.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._iNCIDENT_ComplaintsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._iNCIDENT_DispositionTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.INCIDENT_Disposition.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._iNCIDENT_DispositionTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -18266,15 +18380,6 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._iNCIDENT_EquipmentsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._iNCIDENT_LocationTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.INCIDENT_Location.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._iNCIDENT_LocationTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -18332,15 +18437,6 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._iNCIDENT_TypeTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.INCIDENT_Type.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._iNCIDENT_TypeTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -18351,6 +18447,14 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(ReportDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._iNCIDENT_DispositionTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.INCIDENT_Disposition.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._iNCIDENT_DispositionTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._iNCIDENT_Equipment_StatusTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.INCIDENT_Equipment_Status.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -18375,6 +18479,14 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._iNCIDENT_LocationTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.INCIDENT_Location.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._iNCIDENT_LocationTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._iNCIDENT_POI_TypeTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.INCIDENT_POI_Type.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -18383,19 +18495,19 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._iNCIDENT_TypeTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.INCIDENT_Type.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._iNCIDENT_TypeTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._iNCIDENT_ComplaintsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.INCIDENT_Complaints.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._iNCIDENT_ComplaintsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._iNCIDENT_DispositionTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.INCIDENT_Disposition.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._iNCIDENT_DispositionTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -18412,14 +18524,6 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._iNCIDENT_EquipmentsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._iNCIDENT_LocationTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.INCIDENT_Location.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._iNCIDENT_LocationTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -18471,14 +18575,6 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._iNCIDENT_TypeTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.INCIDENT_Type.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._iNCIDENT_TypeTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -18489,14 +18585,6 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(ReportDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._iNCIDENT_TypeTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.INCIDENT_Type.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._iNCIDENT_TypeTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._iNCIDENT_Safety_OfficerTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.INCIDENT_Safety_Officer.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -18545,14 +18633,6 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._iNCIDENT_LocationTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.INCIDENT_Location.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._iNCIDENT_LocationTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._iNCIDENT_EquipmentsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.INCIDENT_Equipments.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -18569,14 +18649,6 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._iNCIDENT_DispositionTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.INCIDENT_Disposition.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._iNCIDENT_DispositionTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._iNCIDENT_ComplaintsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.INCIDENT_Complaints.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -18585,11 +18657,27 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._iNCIDENT_TypeTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.INCIDENT_Type.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._iNCIDENT_TypeTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._iNCIDENT_POI_TypeTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.INCIDENT_POI_Type.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._iNCIDENT_POI_TypeTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._iNCIDENT_LocationTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.INCIDENT_Location.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._iNCIDENT_LocationTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -18614,6 +18702,14 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._iNCIDENT_Equipment_StatusTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._iNCIDENT_DispositionTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.INCIDENT_Disposition.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._iNCIDENT_DispositionTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -18661,13 +18757,13 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._iNCIDENT_DispositionTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._iNCIDENT_DispositionTableAdapter.Connection) == false))) {
+            if (((this._iNCIDENT_Equipment_PhotoTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._iNCIDENT_Equipment_PhotoTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._iNCIDENT_Equipment_PhotoTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._iNCIDENT_Equipment_PhotoTableAdapter.Connection) == false))) {
+            if (((this._iNCIDENT_DispositionTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._iNCIDENT_DispositionTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -18777,15 +18873,6 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._iNCIDENT_ComplaintsTableAdapter.Adapter);
                     }
                 }
-                if ((this._iNCIDENT_DispositionTableAdapter != null)) {
-                    revertConnections.Add(this._iNCIDENT_DispositionTableAdapter, this._iNCIDENT_DispositionTableAdapter.Connection);
-                    this._iNCIDENT_DispositionTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._iNCIDENT_DispositionTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._iNCIDENT_DispositionTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._iNCIDENT_DispositionTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._iNCIDENT_DispositionTableAdapter.Adapter);
-                    }
-                }
                 if ((this._iNCIDENT_Equipment_PhotoTableAdapter != null)) {
                     revertConnections.Add(this._iNCIDENT_Equipment_PhotoTableAdapter, this._iNCIDENT_Equipment_PhotoTableAdapter.Connection);
                     this._iNCIDENT_Equipment_PhotoTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -18793,6 +18880,15 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                     if (this._iNCIDENT_Equipment_PhotoTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._iNCIDENT_Equipment_PhotoTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._iNCIDENT_Equipment_PhotoTableAdapter.Adapter);
+                    }
+                }
+                if ((this._iNCIDENT_DispositionTableAdapter != null)) {
+                    revertConnections.Add(this._iNCIDENT_DispositionTableAdapter, this._iNCIDENT_DispositionTableAdapter.Connection);
+                    this._iNCIDENT_DispositionTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._iNCIDENT_DispositionTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._iNCIDENT_DispositionTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._iNCIDENT_DispositionTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._iNCIDENT_DispositionTableAdapter.Adapter);
                     }
                 }
                 if ((this._iNCIDENT_Equipment_StatusTableAdapter != null)) {
@@ -18974,13 +19070,13 @@ namespace Complaints.DataLayer.ReportDataSetTableAdapters {
                     this._iNCIDENT_ComplaintsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._iNCIDENT_ComplaintsTableAdapter]));
                     this._iNCIDENT_ComplaintsTableAdapter.Transaction = null;
                 }
-                if ((this._iNCIDENT_DispositionTableAdapter != null)) {
-                    this._iNCIDENT_DispositionTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._iNCIDENT_DispositionTableAdapter]));
-                    this._iNCIDENT_DispositionTableAdapter.Transaction = null;
-                }
                 if ((this._iNCIDENT_Equipment_PhotoTableAdapter != null)) {
                     this._iNCIDENT_Equipment_PhotoTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._iNCIDENT_Equipment_PhotoTableAdapter]));
                     this._iNCIDENT_Equipment_PhotoTableAdapter.Transaction = null;
+                }
+                if ((this._iNCIDENT_DispositionTableAdapter != null)) {
+                    this._iNCIDENT_DispositionTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._iNCIDENT_DispositionTableAdapter]));
+                    this._iNCIDENT_DispositionTableAdapter.Transaction = null;
                 }
                 if ((this._iNCIDENT_Equipment_StatusTableAdapter != null)) {
                     this._iNCIDENT_Equipment_StatusTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._iNCIDENT_Equipment_StatusTableAdapter]));
