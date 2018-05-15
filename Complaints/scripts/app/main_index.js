@@ -136,6 +136,24 @@ $(document).ready(function () {
                     value: data == null ? "" : data.Incident_Occurance_Date,
                     dateInput: true
                 });
+                $("#btn_Print").kendoButton({
+                    click: function () {
+                        var RptId = data.Id;
+                        $.ajax({
+                            type: "GET",
+                            dataType: "json",
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify(data.Id),
+                            url: url_GetReport,
+                            success: function (result) {
+                                return true;
+                            },
+                            error: function (result) {
+                                /// option.error(result);
+                            }
+                        });
+                    }
+                });
                 $("#btnCancel").kendoButton({
                     click: function () {
                         $("#window").data("kendoWindow").close();

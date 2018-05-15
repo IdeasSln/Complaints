@@ -1630,6 +1630,17 @@
     <Content Include="DataLayer\ReportDataSet.xsc">
       <DependentUpon>ReportDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="DataLayer\RepotsDS.xsc">
+      <DependentUpon>RepotsDS.xsd</DependentUpon>
+    </Content>
+    <None Include="DataLayer\RepotsDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RepotsDS.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataLayer\RepotsDS.xss">
+      <DependentUpon>RepotsDS.xsd</DependentUpon>
+    </Content>
     <None Include="DataLayer\ReportDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -2636,6 +2647,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="DataLayer\RepotsDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepotsDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataLayer\ReportDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2666,6 +2683,12 @@
     <Compile Include="Models\POI_Type.cs" />
     <Compile Include="Models\Safety_Officer.cs" />
     <Compile Include="Models\ViewModel_DropDownGrid.cs" />
+    <Compile Include="ProjectReports\CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ProjectReports\IncidentReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -3657,6 +3680,7 @@
     <Content Include="scripts\kendo\2018.1.221\cultures\kendo.culture.aa-ET.min.js.map" />
     <Content Include="scripts\kendo\2018.1.221\cultures\kendo.culture.aa-ER.min.js.map" />
     <Content Include="scripts\kendo\2018.1.221\cultures\kendo.culture.aa-DJ.min.js.map" />
+    <Content Include="Views\Reports\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3666,6 +3690,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
+    <Folder Include="aspnet_client\" />
     <Folder Include="fonts\Content\fonts\" />
     <Folder Include="fonts\Content\Images\" />
     <Folder Include="fonts\Content\Styles\" />
@@ -3680,6 +3705,10 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ProjectReports\CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectReports\IncidentReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>IncidentReport.cs</LastGenOutput>

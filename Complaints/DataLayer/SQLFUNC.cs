@@ -6,7 +6,8 @@ using System.Data;
 using System.Data.SqlClient;
 using Complaints.Models;
 using System.Configuration;
-
+using CrystalDecisions.CrystalReports.Engine;
+using System.IO;
 
 namespace Complaints
 {
@@ -1145,5 +1146,30 @@ namespace Complaints
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public static  DataTable GetIncidentReport(int CmpId)
+        {
+            SqlConnection cnn = new SqlConnection(strCRMARConnectionString);
+            
+                cnn.Open();
+                string strQuery = "select cmp.id,cmp.report_date,cmp.incident_occurance_date,cmp.narrative,disp.description as [DispDesc], " +
+                    "incloc.description as [LocDesc],inctype.description as [TypeDesc],revby.description as [RevDesc], " +
+                    "p.gender_id,p.last_name,p.first_name,p.middle_name,p.dob,p.street,p.city,p.state,p.zip,p.home_number,p.mobile_number,p.other_number, " +
+                    "incgender.description as [GendDesc] from incident_complaints cmp inner join incident_person p on cmp.complainant_id = p.id " +
+                    "left outer join incident_disposition disp on cmp.disposition_id = disp.id " +
+                    "left outer join incident_gender incgender on p.gender_id = incgender.id " +
+                    "left outer join incident_location incloc on cmp.incident_location_id = incloc.id " +
+                      "left outer join incident_type inctype on cmp.incident_type_id = inctype.id " +
+                    "left outer join incident_report_reviewed_by revby on cmp.report_reviewed_by_id = revby.id  " +
+                    "where cmp.id = " + CmpId + "";
+                SqlCommand cmd = new SqlCommand(strQuery, cnn);
+                DataTable dtreport = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dtreport);
+                return dtreport;
+         
+
+      }
+
     }
 }

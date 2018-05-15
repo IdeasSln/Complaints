@@ -178,6 +178,7 @@
                 </tr>
             </table>
         </div>
+        
         <div id="tabstrip">
             <ul>
                 <li id="tab2" class="k-state-active"><span style="color:red;font-weight:bold">*</span> Narrative</li>
@@ -204,7 +205,8 @@
     </div>
     <div class="window-footer">
         <button type="button" id="btnCancel" class="k-button k-button">Cancel</button>
-        <button type="button" id="btn_Save_Changes" class="k-primary k-button">Save changes</button>
+        <button type="button" id="btn_Save_Changes" class="k-primary k-button">Save changes</button>      
+        <button type="button" id="btn_Print" class="k-primary k-button">Print</button>
     </div>
 </script>
 
@@ -243,6 +245,7 @@
     var url_RemoveImage = '@Url.Action("RemoveImage", "Main")';
     var url_GetMaingridComplaint = '@Url.Action("GetMaingridIncident", "Main")';
     var url_GetComplaint = '@Url.Action("GetIncident", "Main")';
+    var url_GetReport = '@Url.Action("PrintReport", "Reports")';
 </script>
 
 
