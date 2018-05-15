@@ -140,7 +140,7 @@ $(document).ready(function () {
                     click: function () {
                         var RptId = data.Id;
                         $.ajax({
-                            type: "GET",
+                            type: "POST",
                             dataType: "json",
                             contentType: "application/json; charset=utf-8",
                             data: JSON.stringify(data.Id),

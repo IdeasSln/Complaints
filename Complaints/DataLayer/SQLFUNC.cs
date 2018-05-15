@@ -1147,7 +1147,7 @@ namespace Complaints
             }
         }
 
-        public static  DataTable GetIncidentReport(int CmpId)
+        public static  DataTable GetIncidentReport(int ? CmpId)
         {
             SqlConnection cnn = new SqlConnection(strCRMARConnectionString);
             

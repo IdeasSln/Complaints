@@ -12,8 +12,8 @@ namespace Complaints.Controllers
     public class ReportsController : Controller
     {
         // GET: Reports
-       [HttpGet]
-        public FileStreamResult PrintReport(int RptId)
+       [HttpPost]
+        public FileStreamResult PrintReport(int ? RptId)
         {
             DataTable dtReport = SQLFUNC.GetIncidentReport(RptId);
             ReportDocument rd = new ReportDocument();
