@@ -140,16 +140,11 @@ $(document).ready(function () {
                     click: function () {
                         var RptId = data.Id;
                         $.ajax({
-                            type: "POST",
-                            dataType: "json",
-                            contentType: "application/json; charset=utf-8",
-                            data: JSON.stringify(data.Id),
-                            url: url_GetReport,
-                            success: function (result) {
-                                return true;
-                            },
-                            error: function (result) {
-                                /// option.error(result);
+                            type: "GET",
+                            url: 'Reports/PrintReport?RptId='+data.Id,                         
+                            success:function()
+                            {
+                                window.location = 'Reports/PrintReport?RptId='+data.Id   
                             }
                         });
                     }
