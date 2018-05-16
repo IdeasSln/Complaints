@@ -12,17 +12,18 @@ namespace Complaints.Controllers
 {
     public class AdminController : Controller
     {
+        //[Authorize]
         public ActionResult Index()
         {
-            return View();          
+            return View();
         }
         [HttpPost]
         public JsonResult GetGridData(int tableId)
         {
             List<ViewModel_DropDownGrid> dropDownGrid = null;
             string tableName = GetGridName(tableId);
-            
-            dropDownGrid = SQLFUNC.GetTableValues(tableName).Select(x => new ViewModel_DropDownGrid() { TableId = x.TableId, Description = x.Description,Active=x.Active }).ToList();
+
+            dropDownGrid = SQLFUNC.GetTableValues(tableName).Select(x => new ViewModel_DropDownGrid() { TableId = x.TableId, Description = x.Description, Active = x.Active }).ToList();
             return Json(dropDownGrid);
         }
         [HttpPost]
@@ -33,17 +34,12 @@ namespace Complaints.Controllers
             {
                 if (viewModel.TableId == 0)
                 {
-                    Response.Write("<script>alert('add')</script>");
                     SQLFUNC.InsertTableValues(tableName, viewModel);
-                  //  SqlFunctions.InsertTableValues(tableName, viewModel);
                 }
                 else
                 {
-                    Response.Write("<script>alert('upd')</script>");
                     SQLFUNC.UpdateTableValues(tableName, viewModel);
                 }
-                   
-
             }
             return Json(true);
         }
@@ -54,7 +50,7 @@ namespace Complaints.Controllers
                 case 1:
                     return "INCIDENT_Gender";
                 case 2:
-                    return "Incidents";
+                    return "INCIDENT_Type";
                 case 3:
                     return "INCIDENT_Location";
                 case 4:
@@ -73,6 +69,5 @@ namespace Complaints.Controllers
                     return null;
             }
         }
-
     }
 }
