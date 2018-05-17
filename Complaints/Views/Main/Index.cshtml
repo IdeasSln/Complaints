@@ -171,7 +171,7 @@
                     <td><label for="simple-input">Other Number</label><input type="text" required="required" id="txtOther" class="k-textbox" name="txtOther" value="#=typeof data.Complainant == 'undefined' ? '': Complainant.Other_Number #" /></td>
                 </tr>
                 <tr>
-                    <td><label for="simple-input"><span style="color:red;font-weight:bold">*</span> BE Number</label><input type="text" required="required" id="txtBENumber" class="k-textbox" name="txtBENumber" value="#=typeof data == null ? '': data.Be_Id #" /></td>
+                    <td><label for="simple-input"><span style="color:red;font-weight:bold">*</span> BE Number</label><input type="text" required="required" id="txtBENumber" class="k-textbox" name="txtBENumber" value="#= data.Be_Id == null ? '': data.Be_Id #" /></td>
                     <td><label for="simple-input"><span style="color:red;font-weight:bold">*</span> Disposition</label><input id="comboDisposition" /></td>
                     <td><label for="simple-input"><span style="color:red;font-weight:bold">*</span> Report Written By</label><input id="comboReportWrittenBy" /></td>
                     <td><label for="simple-input">Report Reviewed By</label><input id="comboReportReviewedBy" /></td>
