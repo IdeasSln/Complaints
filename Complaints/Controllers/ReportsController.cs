@@ -7,10 +7,9 @@ namespace Complaints.Controllers
     public class ReportsController : Controller
     {
         // GET: Reports
-       [HttpGet]
-        public FileStreamResult PrintReport(int  RptId)
+        [HttpGet]
+        public ActionResult PrintReport(int RptId)
         {
-
             DataTable dtReport = SQLFUNC.GetIncidentReport(RptId);
             ReportDocument rd = new ReportDocument();
             rd.Load(Path.Combine(Server.MapPath("~/ProjectReports"), "CrystalReport1.rpt"));

@@ -27,7 +27,7 @@ namespace Complaints.Controllers
         }
 
         [HttpPost]
-        public JsonResult NewComplaint(Complaint cmpt)
+        public JsonResult SaveComplaint(Complaint cmpt)
         {
             if (cmpt.Id == 0)
             {

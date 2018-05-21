@@ -141,10 +141,14 @@ $(document).ready(function () {
                         var RptId = data.Id;
                         $.ajax({
                             type: "GET",
-                            url: 'Reports/PrintReport?RptId='+data.Id,                         
-                            success:function()
+                            cache: false,
+                            url: url_PrintReport,  
+                            data: { RptId: data.Id },
+                            success:function(e)
                             {
-                                window.location = 'Reports/PrintReport?RptId='+data.Id   
+                                window.location = url_PrintReport + "?RptId=" + data.Id;
+                            },
+                            error: function (e) {
                             }
                         });
                     }
@@ -431,7 +435,7 @@ $(document).ready(function () {
                           $("#window").block({ message: 'Loading...</h1>' });
                             $.ajax({
                                 type: 'POST',
-                                url: 'Main/NewComplaint',
+                                url: url_SaveComplaint,
                                 data: test,
                                 dataType: "json",
                                 success: function (result) {
